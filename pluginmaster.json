@@ -3,8 +3,8 @@
     "Author": "Basil",
     "Name": "XIVPerf",
     "InternalName": "XIVPerf",
-    "AssemblyVersion": "0.2.0.0",
-    "Description": "Applies targeted native engine patches to remove CPU hot spots in crowded cities:\n- Havok bone child table (replaces O(N^2) scans in hkaPose::accessBoneModelSpace)\n- Kernel::Notifier skip list (keeps idle GPU resources off the per-frame walk)\n- TempAllocator fast slab cache (per-thread magazines eliminating the 15-thread RenderView lock convoy)\n- Command sort (single-copy stable LSD radix sort for Context.GatherCommands)\n\nEach patch can be toggled independently in /xivperf.",
+    "AssemblyVersion": "0.2.1.0",
+    "Description": "Speeds up a few slow parts of the game client that bottleneck your CPU in crowded areas. Each optimization is reversible and can be toggled individually from the plugin window.",
     "ApplicableVersion": "any",
     "RepoUrl": "https://github.com/Baysul/cuddly-train",
     "Tags": [
@@ -20,16 +20,16 @@
     "LoadSync": false,
     "CanUnloadAsync": false,
     "LoadPriority": 0,
-    "Punchline": "Engine patches for crowded cities.",
-    "Changelog": "Added single-copy stable radix sort for Context.GatherCommands (native v5), alongside Havok child table, Kernel::Notifier skip list, and TempAllocator fast slab cache.",
+    "Punchline": "Improves framerate in crowded cities.",
+    "Changelog": "Simplified plugin descriptions and settings window text.",
     "AcceptsFeedback": true,
     "IsHide": false,
     "IsTestingExclusive": false,
-    "DownloadCount": 4,
-    "DownloadLinkInstall": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.0.0/latest.zip",
-    "DownloadLinkUpdate": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.0.0/latest.zip",
-    "DownloadLinkTesting": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.0.0/latest.zip",
+    "DownloadCount": 6,
+    "DownloadLinkInstall": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.1.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.1.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/Baysul/cuddly-train/releases/download/v0.2.1.0/latest.zip",
     "TestingAssemblyVersion": null,
-    "LastUpdate": "1795167211"
+    "LastUpdate": "1795169307"
   }
 ]
