@@ -1,0 +1,10 @@
+[
+  {
+    "repo": "Baysul/cuddly-train",
+    "internal_name": "XIVPerf",
+    "manifest_asset": "XIVPerf.json",
+    "zip_asset": "latest.zip",
+    "is_hide": false,
+    "is_testing_exclusive": false
+  }
+]

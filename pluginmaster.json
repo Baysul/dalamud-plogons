@@ -1,0 +1,35 @@
+[
+  {
+    "Author": "Basil",
+    "Name": "XIVPerf",
+    "InternalName": "XIVPerf",
+    "AssemblyVersion": "0.1.0.0",
+    "Description": "Applies targeted native engine patches to remove CPU hot spots in crowded cities:\n- Havok bone child table (replaces O(N^2) scans in hkaPose::accessBoneModelSpace)\n- Kernel::Notifier skip list (keeps idle GPU resources off the per-frame walk)\n- TempAllocator fast slab cache (per-thread magazines eliminating the 15-thread RenderView lock convoy)\n\nEach patch can be toggled independently in /xivperf.",
+    "ApplicableVersion": "any",
+    "RepoUrl": "https://github.com/Baysul/cuddly-train",
+    "Tags": [
+      "performance",
+      "fps",
+      "engine"
+    ],
+    "CategoryTags": [
+      "utility"
+    ],
+    "DalamudApiLevel": 15,
+    "LoadRequiredState": 0,
+    "LoadSync": false,
+    "CanUnloadAsync": false,
+    "LoadPriority": 0,
+    "Punchline": "Engine patches for crowded cities.",
+    "Changelog": "Initial release with Havok child table, Kernel::Notifier skip list, and TempAllocator fast slab cache (native v4).",
+    "AcceptsFeedback": true,
+    "IsHide": false,
+    "IsTestingExclusive": false,
+    "DownloadCount": 0,
+    "DownloadLinkInstall": "https://github.com/Baysul/cuddly-train/releases/download/v0.1.0.0/latest.zip",
+    "DownloadLinkUpdate": "https://github.com/Baysul/cuddly-train/releases/download/v0.1.0.0/latest.zip",
+    "DownloadLinkTesting": "https://github.com/Baysul/cuddly-train/releases/download/v0.1.0.0/latest.zip",
+    "TestingAssemblyVersion": null,
+    "LastUpdate": "1795147592"
+  }
+]

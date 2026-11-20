@@ -1,0 +1,57 @@
+name: Update Dalamud Plugin Repository
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: '0 */6 * * *'
+  push:
+    branches:
+      - main
+    paths:
+      - 'plugins.json'
+      - 'scripts/update_repo.py'
+
+permissions:
+  contents: write
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Setup Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+
+      - name: Refresh pluginmaster.json from GitHub Releases
+        env:
+          GITHUB_TOKEN: ${{ github.token }}
+        run: python3 scripts/update_repo.py
+
+      - name: Validate pluginmaster.json
+        run: |
+          python3 -c '
+          import json
+          data = json.load(open("pluginmaster.json"))
+          assert isinstance(data, list) and len(data) > 0
+          for e in data:
+              for k in ("Author", "Name", "InternalName", "AssemblyVersion", "Description", "Punchline",
+                        "ApplicableVersion", "DalamudApiLevel", "DownloadLinkInstall", "DownloadLinkUpdate", "LastUpdate"):
+                  assert k in e and e[k] is not None, f"missing {k}"
+          print(f"Validated {len(data)} plugin entry/entries.")
+          '
+
+      - name: Commit and push if changed
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          if git diff --quiet pluginmaster.json; then
+            echo "pluginmaster.json is already up to date."
+            exit 0
+          fi
+          git add pluginmaster.json
+          git commit -m "chore: update pluginmaster.json"
+          git push
